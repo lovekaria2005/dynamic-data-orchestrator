@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bharat Population Visualizer</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="app-header">
+  <h1>Bharat Population Visualizer </h1>
+  <p>Live Sorting Visualizer — Powered by Census 2011 Population Data</p>
+</header>
+
+<section class="control-panel">
+  <div class="control-group">
+    <label for="limit-input">States to Load</label>
+    <input type="number" id="limit-input" value="40" min="5" max="100" />
+  </div>
+
+  <div class="control-group">
+    <label for="algorithm-select">Algorithm</label>
+    <select id="algorithm-select">
+      <option value="bubble">Bubble Sort</option>
+      <option value="selection">Selection Sort</option>
+      <option value="quick">Quick Sort</option>
+    </select>
+  </div>
+
+  <div class="control-group">
+    <label for="speed-input">Speed (ms)</label>
+    <input type="number" id="speed-input" value="150" min="10" max="1000" />
+  </div>
+
+  <button id="fetch-btn" class="btn btn-secondary">Fetch Data</button>
+  <button id="sort-btn" class="btn btn-primary">Start Sorting</button>
+</section>
+
+<div id="status-banner" class="status-banner hidden"></div>
+
+<main id="bars-container" class="bars-container"></main>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
