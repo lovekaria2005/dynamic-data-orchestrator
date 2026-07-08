@@ -1,89 +1,94 @@
-# Bharat Population Visualizer 
+# Bharat Population Visualizer
 
 A live sorting visualizer that fetches real population data of Indian states
-(Census 2011) from a government API and sorts it in front of you using bubble sort,
-selection sort or quick sort — you can pick which one.
+from the Census 2011 dataset and sorts it using Bubble Sort, Selection Sort,
+or Quick Sort.
 
-Made with plain HTML, CSS and JavaScript. No React or any framework.
+Made with plain HTML, CSS, and JavaScript. No React or framework required.
 
-## Live link
-[paste your deployed link here]
+## Links
 
-## What this project does
+- Live project: https://dynamic-data-orchestrator.vercel.app
+- GitHub repo: https://github.com/lovekaria2005/dynamic-data-orchestrator
 
-This was a college assignment. The requirement was to build a sorting visualizer
-that gets data from a real API (not hardcoded), sort it with animation, and send
-the result to a server after sorting is done.
+## What This Project Does
 
-Instead of using random numbers, I used real data from data.gov.in (India's
-official open data website) — specifically the Census 2011 dataset, which has
-population numbers for every state. So basically the project sorts Indian states
-by population, live.
+This project fetches real population data from data.gov.in and visualizes the
+data as bars. Each bar represents an Indian state, and the bar height is based
+on population.
 
-## How it works
+You can choose a sorting algorithm and watch the bars sort step by step.
 
-- On page load, it fetches state-wise population data from the API
-- Each state becomes a bar, height = population, and the number is shown on the bar
-- You choose an algorithm (bubble/selection/quick) and click "Start Sorting"
-- The bars animate step by step as the algorithm runs
-- Once sorting finishes, it sends the sorted result to a mock API using POST
-  (used jsonplaceholder.typicode.com for this since we didn't need a real backend)
-- If the API call fails for any reason, it shows an error message instead of
-  breaking the page
+## Features
 
-## Why I picked these algorithms
+- Fetches live state-wise population data from an API
+- Visualizes population data as animated bars
+- Supports Bubble Sort, Selection Sort, and Quick Sort
+- Lets users control the sorting speed
+- Submits the sorted result to a mock API after sorting
+- Shows loading, success, and error messages
 
-I added all three (bubble, selection, quick) so I could compare them:
+## How It Works
 
-- Bubble sort — keeps comparing two neighboring bars and swaps them if wrong order.
-  Simple but slow for big data.
-- Selection sort — finds the smallest value in the remaining part and puts it in
-  place. Also slow but fewer swaps than bubble sort.
-- Quick sort — splits the array around a pivot value and sorts each part
-  separately. Faster than the other two for larger arrays.
+1. The app fetches Census 2011 population data from data.gov.in.
+2. It filters the records to keep state-level population data.
+3. The data is rendered as bars in the browser.
+4. The selected sorting algorithm sorts the bars with animation.
+5. After sorting, the result is submitted to a mock API.
 
-## How I handled async stuff
+## Folder Structure
 
-Used async/await everywhere instead of .then() chains, and wrapped API calls in
-try/catch so errors don't crash the app. The sorting functions are also async —
-they wait a bit (using a delay function) after every comparison so you can
-actually see the bars move instead of it happening instantly.
+```text
+dynamic-data-orchestrator/
+|-- index.html
+|-- css/
+|   |-- style.css
+|-- js/
+|   |-- config.js
+|   |-- api/
+|   |   |-- censusApi.js
+|   |-- algorithms/
+|   |   |-- bubbleSort.js
+|   |   |-- selectionSort.js
+|   |   |-- quickSort.js
+|   |-- ui/
+|   |   |-- renderBars.js
+|   |   |-- statusBanner.js
+|   |-- utils/
+|   |   |-- delay.js
+|   |   |-- formatNumber.js
+|   |-- main.js
+|-- .gitignore
+|-- README.md
+```
 
-## Folder structure
+## How To Run Locally
 
-census-sort-visualizer/
-├── index.html
-├── css/
-│   └── style.css
-├── js/
-│   ├── config.js 
-│   ├── config.example.js 
-│   ├── api/
-│   │   └── censusApi.js
-│   ├── algorithms/
-│   │   ├── bubbleSort.js
-│   │   ├── selectionSort.js
-│   │   └── quickSort.js
-│   ├── ui/
-│   │   ├── renderBars.js
-│   │   └── statusBanner.js
-│   ├── utils/
-│   │   ├── delay.js
-│   │   └── formatNumber.js
-│   └── main.js
-├── .gitignore
-└── README.md
+1. Clone the repository:
 
-## How to run this on your own machine
+```bash
+git clone https://github.com/lovekaria2005/dynamic-data-orchestrator.git
+```
 
-1. Clone this repo
-   git clone https://github.com/YOUR_USERNAME/census-sort-visualizer.git
-2. Copy js/config.example.js and rename the copy to js/config.js
-3. Go to data.gov.in, make a free account, and get your own API key
-4. Paste your key inside js/config.js
-5. Open index.html in browser, or use Live Server in VS Code (needed because
-   ES6 modules don't work properly if you just double-click the html file)
+2. Open the project folder:
 
+```bash
+cd dynamic-data-orchestrator
+```
 
+3. Open `index.html` with Live Server in VS Code.
 
-Made by Love karia
+## Deployment
+
+This project is deployed on Vercel:
+
+```text
+https://dynamic-data-orchestrator.vercel.app
+```
+
+Whenever new changes are pushed to the `main` branch on GitHub, Vercel
+automatically redeploys the live site.
+
+## Made By
+
+Love Karia
